@@ -104,6 +104,7 @@ alias zshconfig="code ~/.zshrc"
 alias yy="yarn dev:web"
 alias gorigin="git reset --hard @{u}"
 alias gpublish="git push -u origin $(git rev-parse --abbrev-ref HEAD)"
+alias gmdev="git merge develop --squash"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
