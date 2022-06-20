@@ -102,9 +102,15 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias zshconfig="code ~/.zshrc"
 alias yy="yarn dev:web"
-alias gorigin="git reset --hard @{u}"
-alias gpublish="git push -u origin $(git rev-parse --abbrev-ref HEAD)"
 alias gmdev="git merge develop --squash"
+
+function gpublish {
+    echo -n Publishing to $(git rev-parse --abbrev-ref HEAD) && git push -u origin $(git rev-parse --abbrev-ref HEAD) $1
+}
+
+function gorigin() {
+    git reset --hard @{u}
+}
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
