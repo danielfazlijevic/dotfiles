@@ -1,5 +1,5 @@
 # Fig pre block. Keep at the top of this file.
-. "$HOME/.fig/shell/zshrc.pre.zsh"
+[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && . "$HOME/.fig/shell/zshrc.pre.zsh"
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -101,15 +101,23 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias zshconfig="code ~/.zshrc"
-alias yy="yarn dev:web"
+alias yy="yarn dev"
 alias gmdev="git merge develop --squash"
 
 function gpublish {
-    echo -n Publishing to $(git rev-parse --abbrev-ref HEAD) && git push -u origin $(git rev-parse --abbrev-ref HEAD) $1
+    echo -e Publishing to $(git rev-parse --abbrev-ref HEAD) && git push -u origin $(git rev-parse --abbrev-ref HEAD) $1
 }
 
 function gorigin() {
     git reset --hard @{u}
+}
+
+function dev {
+    echo -e "Checkouting develop and pulling ..." && git checkout develop && git pull $1 --ff-only
+}
+
+function pulaj {
+    echo -e "Pulling latest develop changes into current branch" && git pull origin develop
 }
 
 export NVM_DIR="$HOME/.nvm"
@@ -117,4 +125,4 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Fig post block. Keep at the bottom of this file.
-. "$HOME/.fig/shell/zshrc.post.zsh"
+[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && . "$HOME/.fig/shell/zshrc.post.zsh"
