@@ -116,8 +116,12 @@ function dev {
     echo -e "Checkouting develop and pulling ..." && git checkout develop && git pull $1 --ff-only
 }
 
-function pulaj {
-    echo -e "Pulling latest develop changes into current branch" && git pull origin develop
+function oipa {
+    echo -e "OKAY I PULL UP..." && git pull origin develop
+}
+
+function fnm {
+    echo -e "I hate node_modules ..." && yarn dlx npkill
 }
 
 export NVM_DIR="$HOME/.nvm"
