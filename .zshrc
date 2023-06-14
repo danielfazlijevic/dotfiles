@@ -1,5 +1,5 @@
 # Fig pre block. Keep at the top of this file.
-[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && . "$HOME/.fig/shell/zshrc.pre.zsh"
+[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -105,7 +105,7 @@ alias yy="yarn dev"
 alias gmdev="git merge develop --squash"
 
 function gpublish {
-    echo -e Publishing to $(git rev-parse --abbrev-ref HEAD) && git push -u origin $(git rev-parse --abbrev-ref HEAD) $1
+    echo -e Publishing to $(git rev-parse --abbrev-ref HEAD) && git push -u origin $(git rev-parse --abbrev-ref HEAD) $1 && afplay /System/Library/Sounds/Glass.aiff 
 }
 
 function gorigin() {
@@ -128,5 +128,15 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+. /Users/daniel/Projects/ctd-dev/modules/ctd-boundary/boundary.sh
+
+
+. /Users/daniel/Projects/ctd-dev/modules/ctd-boundary/kubernetes/kubernetes.sh
+
+
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+
 # Fig post block. Keep at the bottom of this file.
-[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && . "$HOME/.fig/shell/zshrc.post.zsh"
+[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
